@@ -1,67 +1,10 @@
 <!DOCTYPE html>
 <html>
-
 <head>
 </head>
-
 <body>
   <div class="wrapper">
-
-    <h1>{{title}}</h1>
-
-    <div class="container">
-
-      <form class="form-inline" method="post" (ngSubmit)="onSubmit()" #vehicleForm="ngForm">
-
-        <div class="formgroup">
-          <label for="type">Type:</label>
-          <select [(ngModel)]="vehicle.type" required name="type" #type="ngModel">
-            <option value="">Select type</option>
-            <option *ngFor="let vehicleType of vehicleTypes" value="{{vehicleType}}">{{vehicleType}}</option>
-          </select>
-          <div *ngIf="(submitted && type.invalid) || (type.dirty && type.invalid)" class="error">Type is required.</div>
-        </div>
-
-        <div class="formgroup">
-          <label for="make">Make:</label>
-          <input type="text" class="form-control" id="make" required [(ngModel)]="vehicle.make" name="make"  #make="ngModel">
-          <div *ngIf="(submitted && make.invalid) || (make.dirty && make.invalid)" class="error">Make is required.</div>
-        </div>
-
-        <div class="formgroup">
-          <label for="make">Model:</label>
-          <input [(ngModel)]="vehicle.model" type="text" id="model" required placeholder="Enter Model" name="model" #model="ngModel">
-          <div *ngIf="(submitted && model.invalid) || (model.dirty && model.invalid)" class="error">Model is required.</div>
-        </div>
-
-        <div class="formgroup">
-          <label>&nbsp;</label>
-          <button class="button" type="submit">Submit</button>
-        </div>
-
-      </form>
-
-      <form class="filter-form">
-        <input [(ngModel)]="keyword" type="text" placeholder="Search Vehicle" name="keyword">
-      </form>
-
-      <table>
-        <tr [ngClass]="{'highlight': highlightRow(vehicle)}" *ngFor="let vehicle of vehicles" highlightRow>
-          <td>{{vehicle.type}}</td>
-          <td>{{vehicle.make}}</td>
-          <td>{{vehicle.model}}</td>
-        </tr>
-      </table>
-
-
-    </div>
-
-    
-    <button style="float: right; padding: 15px; clear: both;" class="button" (click)="printJson()">JSON</button>
-    <textarea class="printJson" *ngIf="print">{{vehicles | json}}</textarea>
-
+    <app-vehicle></app-vehicle>
   </div>
-
 </body>
-
 </html>

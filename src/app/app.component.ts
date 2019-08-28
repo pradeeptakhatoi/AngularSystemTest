@@ -40,12 +40,11 @@ export class AppComponent {
     }
   }
 
-  filterVehicle() {
-    if (this.keyword.length >= 3) {
-      this.vehicles = this.vehicles.filter(v => {
-        v.type == this.keyword || v.make == this.keyword || v.model == this.keyword
-      });
-    } 
+  highlightRow(item: Vehicle) {
+    if (this.keyword.length < 3) {
+      return false;
+    }
+    return item.type.includes(this.keyword) || item.make.includes(this.keyword) || item.model.includes(this.keyword);
   }
 
   printJson() {

@@ -42,11 +42,11 @@
       </form>
 
       <form class="filter-form">
-        <input [(ngModel)]="keyword" (keyup)="filterVehicle()" type="text" placeholder="Search Vehicle" name="keyword">
+        <input [(ngModel)]="keyword" type="text" placeholder="Search Vehicle" name="keyword">
       </form>
 
       <table>
-        <tr *ngFor="let vehicle of vehicles">
+        <tr [ngClass]="{'highlight': highlightRow(vehicle)}" *ngFor="let vehicle of vehicles" highlightRow>
           <td>{{vehicle.type}}</td>
           <td>{{vehicle.make}}</td>
           <td>{{vehicle.model}}</td>
